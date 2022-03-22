@@ -114,6 +114,7 @@ const keysMay = (e) => {
 
 const drumPadPlay = (url) => {
   const soundPlay = new Audio(url).play();
+  if(silenceWeAreRecording) recordedSession.push({pad: url, timestamp: new Date()});
 };
 
 let playCrash = document
@@ -167,3 +168,40 @@ const portada = document.querySelector("#portada");
 portada.addEventListener("click", () => {
   portada = portada.toggleAttribute("hidden");
 });
+
+let recordedSession = new Array();
+let silenceWeAreRecording = false;
+
+
+//Handler click boton record
+function recordDrumSequence(){
+  if(!silenceWeAreRecording){
+    recordedSession = new Array();
+    document.getElementById("record_stop").innerHTML = 'Detener (l/L)';
+    recordedSession.push({pad: null, timestamp: new Date()});
+  }else{
+    document.getElementById("record_stop").innerHTML = 'Grabar (l/L)';
+  }
+  silenceWeAreRecording = !silenceWeAreRecording;
+}
+
+function playRecordedSession(index){
+if(index==null || index==undefined)  index = 0; 
+  if(index<recordedSession.length){
+    playSound(index)
+  }
+
+}
+
+function playSound (index){
+  if (recordedSession[index+1] !=null){
+    const milliseconds = recordedSession[index+1].timestamp.getTime() - recordedSession[index].timestamp.getTime();
+    setTimeout(function(){
+      const soundPlay = new Audio(recordedSession[index+1].pad).play();
+      playRecordedSession(++index);
+    }, milliseconds);
+  }
+}
+
+
+
