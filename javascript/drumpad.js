@@ -116,38 +116,54 @@ const drumPadPlay = (url) => {
   const soundPlay = new Audio(url).play();
 };
 
-let playCrash = document.getElementById("crash");
-playCrash.setAttribute("onclick", "drumPadPlay(crashMin)");
+let playCrash = document
+  .getElementById("crash")
+  .addEventListener("click", () => drumPadPlay(crashMin));
+let playKick = document
+  .getElementById("kick1")
+  .addEventListener("click", () => drumPadPlay(kick1Min));
 
-let playKick = document.getElementById("kick1");
-playKick.setAttribute("onclick", "drumPadPlay(kick1Min)");
+let playKick2 = document
+  .getElementById("kick2")
+  .addEventListener("click", () => drumPadPlay(kick2Min));
 
-let playKick2 = document.getElementById("kick2");
-playKick2.setAttribute("onclick", "drumPadPlay(kick2Min)");
+let playClap = document
+  .getElementById("clap")
+  .addEventListener("click", () => drumPadPlay(clapMin));
 
-let playClap = document.getElementById("clap");
-playClap.setAttribute("onclick", "drumPadPlay(clapMin)");
+let playRide = document
+  .getElementById("ride")
+  .addEventListener("click", () => drumPadPlay(rideMin));
 
-let playRide = document.getElementById("ride");
-playRide.setAttribute("onclick", "drumPadPlay(rideMin)");
+let playTomHigh = document
+  .getElementById("tomhigh")
+  .addEventListener("click", () => drumPadPlay(tomHigMin));
 
-let playTomHigh = document.getElementById("tomhigh");
-playTomHigh.setAttribute("onclick", "drumPadPlay(tomHigMin)");
+let playTomMid = document
+  .getElementById("tommid")
+  .addEventListener("click", () => drumPadPlay(tomMidMin));
 
-let playTomMid = document.getElementById("tommid");
-playTomMid.setAttribute("onclick", "drumPadPlay(tomMidMin)");
+let playSnare = document
+  .getElementById("snare")
+  .addEventListener("click", () => drumPadPlay(snareMin));
 
-let playSnare = document.getElementById("snare");
-playSnare.setAttribute("onclick", "drumPadPlay(snareMin)");
+let playHiHatOpen = document
+  .getElementById("hihatopen")
+  .addEventListener("click", () => drumPadPlay(hiHatOpenMin));
 
-let playHiHatOpen = document.getElementById("hihatopen");
-playHiHatOpen.setAttribute("onclick", "drumPadPlay(hiHatOpenMin)");
+let playHiHatClose = document
+  .getElementById("hihatclose")
+  .addEventListener("click", () => drumPadPlay(hiHatCloseMin));
 
-let playHiHatClose = document.getElementById("hihatclose");
-playHiHatClose.setAttribute("onclick", "drumPadPlay(hiHatCloseMin)");
-
-let playTomLow = document.getElementById("tomlow");
-playTomLow.setAttribute("onclick", "drumPadPlay(tomLowMin)");
+let playTomLow = document
+  .getElementById("tomlow")
+  .addEventListener("click", () => drumPadPlay(tomLowMin));
 
 document.addEventListener("keydown", keysMin);
 document.addEventListener("keydown", keysMay);
+
+const portada = document.querySelector("#portada");
+
+portada.addEventListener("click", () => {
+  portada = portada.toggleAttribute("hidden");
+});
