@@ -14,6 +14,7 @@ const samplesMin = [
   "/samples/snare.wav",
   "/samples/tom-low.wav",
   "/samples/hihat-close.wav",
+  "/samples/scratch1.wav",
 ];
 
 //samples keywords mayusculas
@@ -30,6 +31,7 @@ const samplesMay = [
   "/samples/SamplesMay/Perc-3.wav",
   "/samples/SamplesMay/Kick-2.wav",
   "/samples/SamplesMay/Snare-1.wav",
+  "/samples/SamplesMay/needle.wav",
 ];
 
 const [
@@ -44,6 +46,7 @@ const [
   snareMin,
   tomLowMin,
   hiHatCloseMin,
+  scratchMin,
 ] = samplesMin;
 
 const [
@@ -58,6 +61,7 @@ const [
   tomLowMay,
   kick2May,
   snareMay,
+  needleMay,
 ] = samplesMay;
 
 const keysMin = (e) => {
@@ -83,6 +87,8 @@ const keysMin = (e) => {
     drumPadPlay(kick2Min);
   } else if (e.key == "m") {
     drumPadPlay(snareMin);
+  } else if (e.key == "j") {
+    drumPadPlay(scratchMin);
   }
 };
 
@@ -109,12 +115,15 @@ const keysMay = (e) => {
     drumPadPlay(kick2May);
   } else if (e.key == "M") {
     drumPadPlay(snareMay);
+  } else if (e.key == "J") {
+    drumPadPlay(needleMay);
   }
 };
 
 const drumPadPlay = (url) => {
   const soundPlay = new Audio(url).play();
-  if(silenceWeAreRecording) recordedSession.push({pad: url, timestamp: new Date()});
+  if (silenceWeAreRecording)
+    recordedSession.push({ pad: url, timestamp: new Date() });
 };
 
 let playCrash = document
@@ -160,6 +169,10 @@ let playTomLow = document
   .getElementById("tomlow")
   .addEventListener("click", () => drumPadPlay(tomLowMin));
 
+const playScratch = document
+  .getElementById("scratch")
+  .addEventListener("click", () => drumPadPlay(scratchMin));
+
 document.addEventListener("keydown", keysMin);
 document.addEventListener("keydown", keysMay);
 
@@ -172,36 +185,33 @@ portada.addEventListener("click", () => {
 let recordedSession = new Array();
 let silenceWeAreRecording = false;
 
-
 //Handler click boton record
-function recordDrumSequence(){
-  if(!silenceWeAreRecording){
+function recordDrumSequence() {
+  if (!silenceWeAreRecording) {
     recordedSession = new Array();
-    document.getElementById("record_stop").innerHTML = 'Detener (l/L)';
-    recordedSession.push({pad: null, timestamp: new Date()});
-  }else{
-    document.getElementById("record_stop").innerHTML = 'Grabar (l/L)';
+    document.getElementById("record_stop").innerHTML = "Detener (l/L)";
+    recordedSession.push({ pad: null, timestamp: new Date() });
+  } else {
+    document.getElementById("record_stop").innerHTML = "Grabar (l/L)";
   }
   silenceWeAreRecording = !silenceWeAreRecording;
 }
 
-function playRecordedSession(index){
-if(index==null || index==undefined)  index = 0; 
-  if(index<recordedSession.length){
-    playSound(index)
+function playRecordedSession(index) {
+  if (index == null || index == undefined) index = 0;
+  if (index < recordedSession.length) {
+    playSound(index);
   }
-
 }
 
-function playSound (index){
-  if (recordedSession[index+1] !=null){
-    const milliseconds = recordedSession[index+1].timestamp.getTime() - recordedSession[index].timestamp.getTime();
-    setTimeout(function(){
-      const soundPlay = new Audio(recordedSession[index+1].pad).play();
+function playSound(index) {
+  if (recordedSession[index + 1] != null) {
+    const milliseconds =
+      recordedSession[index + 1].timestamp.getTime() -
+      recordedSession[index].timestamp.getTime();
+    setTimeout(function () {
+      const soundPlay = new Audio(recordedSession[index + 1].pad).play();
       playRecordedSession(++index);
     }, milliseconds);
   }
 }
-
-
-

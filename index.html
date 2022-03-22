@@ -6,7 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DrumPad</title>
-    <link rel="stylesheet" href="/css/otro4.css">
+    <link rel="stylesheet" href="/css/drumpad.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
 </head>
 
 <body>
@@ -16,30 +25,33 @@
             <h2>DRUMPAD</h2>
             <h3>¡Bienvenid@!</h3>
             <div class="text">
-                <p>Pulsa las teclas que figuran en pantalla, para hacer sonar este DrumPad.</p>
-                <p>Si activas "Bloq Mayus" podras cambiar por otro kit de bateria distinto </p>
+                <p>Pulsa las teclas que figuran en pantalla, para hacer sonar este DrumPad. Puedes grabar y
+                    reproducirlo.</p>
+                <p>Si activas "Bloq Mayus" podras cambiar por otro kit de bateria distinto para tocar con tu teclado, y
+                    combinarlos.
+                </p>
                 <p>Haz click en cualquier sitio para comenzar.</p>
             </div>
         </div>
     </section>
 
     <section id="drumpad">
-        <div id="ride">4 RIDE</div>
-        <div></div>
-        <div></div>
+        <div id="ride">RIDE (4)</div>
+        <div class="vacio"></div>
+        <div class="vacio"></div>
         <div id="record_stop" onclick="recordDrumSequence()"> RECORD_STOP (l/L)</div>
-        <div id="crash">r/R CRASH</div>
-        <div id="tomhigh">t/T TOM HIGH</div>
-        <div id="clap">y/Y CLAP</div>
+        <div id="crash">CRASH (r/R)</div>
+        <div id="tomhigh">TOM HIGH (t/T)</div>
+        <div id="clap">CLAP (y/Y)</div>
         <div id="play" onclick="playRecordedSession()">PLAY (p/P)</div>
-        <div id="hihatopen">f/F HIHAT OPEN</div>
-        <div id="hihatclose">g/G HIHAT CLOSE</div>
-        <div id="tommid">h/H TOM MID</div>
-        <div></div>
-        <div id="kick1">v/V KICK</div>
-        <div id="tomlow">b/B TOM LOW</div>
-        <div id="kick2">n/N KICK2</div>
-        <div id="snare">m/M SNARE</div>
+        <div id="hihatopen">HIHAT OPEN (f/F)</div>
+        <div id="hihatclose">HIHAT CLOSE (g/G)</div>
+        <div id="tommid">TOM MID (h/H)</div>
+        <div id="scratch">SCRATCH (j/J)</div>
+        <div id="kick1">KICK (v/V)</div>
+        <div id="tomlow">TOM LOW (b/B)</div>
+        <div id="kick2">KICK2 (n/N)</div>
+        <div id="snare">SNARE (m/M)</div>
     </section>
 
 
